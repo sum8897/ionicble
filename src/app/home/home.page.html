@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center;">
+      Dyfo Bluetooth Lock System
+    </ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-button expand="full" (click)="scan()" slot="end">
+  <ion-icon name="Bluetooth"></ion-icon>
+  <p>Scan</p>
+</ion-button>
+
+
+  <ion-list> 
+   
+    <ion-button *ngFor="let device of devices" (click)="deviceSelected(device)">
+      <h2>{{device.name || 'Unnamed' }}fghhg</h2>
+      <p>{{device.id}}</p>
+      <p>RSSI: {{device.rssi}}</p>
+    </ion-button>
+  </ion-list>
+
+  <ion-item>
+    <ion-label>Lock/UnLock</ion-label>
+    <ion-toggle [(ngModel)]="lockvalue"  (ionChange)="onLockClick($event);"></ion-toggle>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar style="text-align: center;">
+    <p>{{ statusMessage }}</p>
+  </ion-toolbar>
+</ion-footer>
